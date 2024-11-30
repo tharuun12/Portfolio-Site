@@ -13,7 +13,7 @@ const experiences = [
     ]
   },
   {
-    company: 'Smar Technologies Private Limited',
+    company: 'SMAR Technologies Private Limited',
     role: 'Part-Time Developer Intern',
     period: 'Sep 2023 - Nov 2023',
     description: [

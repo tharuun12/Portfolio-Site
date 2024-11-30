@@ -18,6 +18,12 @@ const socialLinks = [
   }
 ];
 
+/**
+ * Footer component that renders the footer section of the website.
+ * It includes copyright information and social media links.
+ *
+ * @returns {JSX.Element} The rendered footer component.
+ */
 export default function Footer() {
   return (
     <footer className="bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
@@ -27,20 +33,7 @@ export default function Footer() {
             © 2024 Tharuun M | All Rights Reserved
           </p>
           
-          <div className="flex space-x-6">
-            {socialLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
-              >
-                <link.icon className="w-6 h-6" />
-                <span className="sr-only">{link.label}</span>
-              </a>
-            ))}
-          </div>
+          
         </div>
       </div>
     </footer>

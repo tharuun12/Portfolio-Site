@@ -1,15 +1,13 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Download } from 'lucide-react';
+import { FaCode, FaDatabase, FaTools } from 'react-icons/fa'; // Category icons
 
-const skills = [
-  { name: 'Python', level: 90 },
-  { name: 'Java', level: 85 },
-  { name: 'MySQL', level: 80 },
-  { name: 'Android Studio', level: 75 },
-  { name: 'VS Code', level: 95 },
-  { name: 'Git/GitHub', level: 85 },
-];
+const skillCategories = {
+  PROGRAMMING: ['Python', 'JavaScript'],
+  DATABASES: ['MySQL'],
+  TOOLS: ['Android Studio', 'VS Code', 'Git/GitHub'],
+};
 
 const certifications = [
   {
@@ -28,19 +26,25 @@ export default function About() {
     threshold: 0.1,
   });
 
+  const categoryIcons = {
+    "PROGRAMMING": <FaCode className="text-blue-400 mr-2" />,
+    "DATABASES": <FaDatabase className="text-blue-400 mr-2" />,
+    "TOOLS": <FaTools className="text-blue-400 mr-2" />,
+  };
+
   return (
-    <section id="about" className="section-container">
+    <section id="about" className="py-16 bg-gray-50 dark:bg-gray-900">
       <motion.div
         ref={ref}
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8 }}
-        className="max-w-4xl mx-auto"
+        className="max-w-6xl mx-auto px-6"
       >
         <h2 className="text-4xl font-bold text-center mb-12 text-gradient">About Me</h2>
-        
+
         <div className="grid md:grid-cols-2 gap-12">
-          <div>
+          <div className="text-center md:text-left">
             <motion.img
               src="src\assert\my photo.jpg"
               alt="Profile"
@@ -48,14 +52,13 @@ export default function About() {
               whileHover={{ scale: 1.05, rotate: 5 }}
               transition={{ type: "spring", stiffness: 300 }}
             />
-            
             <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
               I am a passionate Computer Science student at Amrita Vishwa Vidyapeetham. 
               I thrive on creating impactful software solutions with a focus on cutting-edge 
               technologies like React, Blockchain, and AI.
             </p>
 
-            <div className="flex justify-center gap-4">
+            <div className="flex justify-center gap-6">
               <motion.a
                 href="src\assert\Tharuun M Resume.pdf"
                 download
@@ -80,41 +83,85 @@ export default function About() {
           </div>
 
           <div>
-            <h3 className="text-2xl font-semibold mb-6">Skills</h3>
-            <div className="space-y-4">
-              {skills.map((skill) => (
-                <div key={skill.name}>
-                  <div className="flex justify-between mb-1">
-                    <span className="font-medium">{skill.name}</span>
-                    <span>{skill.level}%</span>
+           <div>
+              <div className="max-w-3xl mx-auto px-4 py-6">
+              <div className="mb-6">
+                  <h3 className="text-3xl font-bold mb-8 text-center text-white">
+                    SKILLS
+                  </h3>
+
+                  {/* PROGRAMMING */}
+                  <div className="mb-6">
+                    <h4 className="text-xl font-semibold text-[#e5e7eb] mb-3">PROGRAMMING</h4>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-blue-600 rounded-full text-sm text-white">
+                        Python
+                      </span>
+                      <span className="px-3 py-1 bg-blue-600 rounded-full text-sm text-white">
+                        JavaScript
+                      </span>
+                    </div>
                   </div>
-                  <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-                    <motion.div
-                      className="h-full bg-blue-600"
-                      initial={{ width: 0 }}
-                      animate={inView ? { width: `${skill.level}%` } : {}}
-                      transition={{ duration: 1, delay: 0.2 }}
-                    />
+
+                  {/* DATABASES */}
+                  <div className="mb-6">
+                    <h4 className="text-xl font-semibold text-[#e5e7eb] mb-3">DATABASES</h4>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-blue-600 rounded-full text-sm text-white">
+                        MySQL
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* TOOLS */}
+                  <div className="mb-6">
+                    <h4 className="text-xl font-semibold text-[#e5e7eb] mb-3">TOOLS</h4>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-blue-600 rounded-full text-sm text-white">
+                        Android Studio
+                      </span>
+                      <span className="px-3 py-1 bg-blue-600 rounded-full text-sm text-white">
+                        VS Code
+                      </span>
+                      <span className="px-3 py-1 bg-blue-600 rounded-full text-sm text-white">
+                        Git/GitHub
+                      </span>
+                    </div>
                   </div>
                 </div>
-              ))}
-            </div>
 
-            <h3 className="text-2xl font-semibold mt-8 mb-6">Certifications</h3>
-            <div className="space-y-4">
-              {certifications.map((cert) => (
-                <motion.a
-                  key={cert.name}
-                  href={cert.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block p-4 border rounded-lg hover:border-blue-500 transition-colors"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  {cert.name}
-                </motion.a>
-              ))}
+
+                  <br />
+
+                  {/* Certifications Section */}
+                  <h3 className="text-3xl font-bold mb-6 text-center text-white">
+                    CERTIFICATIONS
+                  </h3>
+                  
+                  <div className="grid grid-cols-1 gap-6">
+                    {certifications.map((cert) => (
+                      <motion.a
+                        key={cert.name}
+                        href={cert.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group block p-4 rounded-lg border hover:border-blue-500 transition-all duration-300 
+                          backdrop-blur-sm bg-[#1f2937] border-[#2563eb] text-white"
+                        whileHover={{ scale: 1.01, y: -2 }}
+                      >
+                        <div className="flex items-center space-x-3">
+                          <div className="p-2 bg-[#2563eb] rounded-lg group-hover:bg-[#1d4ed8] transition-colors">
+                            <Download className="w-5 h-5 text-white" />
+                          </div>
+                          <span className="text-white group-hover:text-[#2563eb] transition-colors">
+                            {cert.name}
+                          </span>
+                        </div>
+                      </motion.a>
+                    ))}
+                  </div>
             </div>
+          </div>
           </div>
         </div>
       </motion.div>

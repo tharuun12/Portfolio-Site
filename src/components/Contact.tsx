@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Send, Mail, Phone } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 
 export default function Contact() {
@@ -25,14 +25,14 @@ export default function Contact() {
   
     try {
       await emailjs.send(
-        'service_90dx9gm', // Service ID
-        'template_tz6aet6', // Template ID
+        'service_90dx9gm', 
+        'template_tz6aet6', 
         {
-          to_name: 'Recipient Name', // Replace with recipient logic if dynamic
+          to_name: 'Recipient Name',
           from_name: formData.get('name'),
           message: formData.get('message'),
         },
-        'GfshVEA4WAM5Q6nn2' // Public Key
+        'GfshVEA4WAM5Q6nn2'
       );
       setSubmitStatus('success');
       formRef.current.reset();
@@ -43,7 +43,6 @@ export default function Contact() {
       setIsSubmitting(false);
     }
   };
-  
 
   return (
     <section id="contact" className="section-container">
@@ -51,13 +50,20 @@ export default function Contact() {
         ref={ref}
         initial={{ opacity: 0, y: 50 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.8, staggerChildren: 0.2 }}
         className="max-w-4xl mx-auto"
       >
-        <h2 className="text-4xl font-bold text-center mb-12 text-gradient">Contact Me</h2>
+        <motion.h2
+          className="text-4xl font-bold text-center mb-12 text-gradient"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          Contact Me
+        </motion.h2>
         
         <div className="grid md:grid-cols-2 gap-12">
-          <div>
+          <motion.div initial={{ opacity: 0, x: -50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <h3 className="text-2xl font-semibold mb-6">Get in Touch</h3>
             <p className="text-gray-600 dark:text-gray-300 mb-8">
               I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
@@ -77,51 +83,36 @@ export default function Contact() {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
           
-          <div>
+          <motion.div initial={{ opacity: 0, x: 50 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 
-                    focus:ring-2 focus:ring-blue-500 dark:bg-gray-700"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 
-                    focus:ring-2 focus:ring-blue-500 dark:bg-gray-700"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={4}
-                  className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 
-                    focus:ring-2 focus:ring-blue-500 dark:bg-gray-700"
-                />
-              </div>
+              {['name', 'email', 'message'].map((field, index) => (
+                <motion.div key={field} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 * index }}>
+                  <label htmlFor={field} className="block text-sm font-medium mb-2 capitalize">
+                    {field}
+                  </label>
+                  {field !== 'message' ? (
+                    <input
+                      type={field}
+                      id={field}
+                      name={field}
+                      required
+                      className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 
+                        focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 focus:scale-105 transition-transform"
+                    />
+                  ) : (
+                    <textarea
+                      id={field}
+                      name={field}
+                      required
+                      rows={4}
+                      className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 
+                        focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 focus:scale-105 transition-transform"
+                    />
+                  )}
+                </motion.div>
+              ))}
               
               <motion.button
                 type="submit"
@@ -131,14 +122,7 @@ export default function Contact() {
                 className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 
                   disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
               >
-                {isSubmitting ? (
-                  'Sending...'
-                ) : (
-                  <>
-                    Send Message
-                    <Send className="w-4 h-4 ml-2" />
-                  </>
-                )}
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </motion.button>
               
               {submitStatus === 'success' && (
@@ -148,7 +132,7 @@ export default function Contact() {
                 <p className="text-red-600 text-center">Failed to send message. Please try again.</p>
               )}
             </form>
-          </div>
+          </motion.div>
         </div>
       </motion.div>
     </section>

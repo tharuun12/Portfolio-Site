@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Github } from 'lucide-react';
 
@@ -24,7 +23,7 @@ const Projects = () => {
         'Integrated IPFS for unique file identification and secure hosting.',
         'Used MetaMask for seamless and secure transactions'
       ],
-      github: 'https://github.com/tharuun12'
+      github: 'https://github.com/tharuun12/Secure-File-System-'
     },
     {
       title: 'Fall and Activity Detection System',
@@ -35,7 +34,7 @@ const Projects = () => {
         'Integrated TensorFlow Lite for real-time activity recognition.',
         'Added a secure login system using SharedPreferences.'
       ],
-      github: 'https://github.com/tharuun12'
+      github: 'https://github.com/tharuun12/Fall-and-Activity-Detection-'
     },
     {
       title: 'Personalized Rental Matching System',
@@ -45,7 +44,7 @@ const Projects = () => {
         'Built a recommendation system to match users with preferred accommodations.',
         'Achieved high prediction accuracy for interest levels based on user queries.'
       ],
-      github: 'https://github.com/tharuun12'
+      github: 'https://github.com/tharuun12/RENTAL-LISTING-INTEREST-LEVELS'
     }
   ];
 

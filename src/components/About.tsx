@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Download } from 'lucide-react';
 import { FaCode, FaDatabase, FaTools } from 'react-icons/fa';
-
+import image from "../static/images/myPhoto.jpg"
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -93,7 +93,7 @@ export default function About() {
             variants={itemVariants}
           >
             <motion.img
-              src="src\assert\my photo.jpg"
+              src={image}
               alt="Profile"
               className="rounded-full w-48 h-48 mx-auto mb-8 object-cover border-4 border-blue-500 shadow-lg"
               initial={{ scale: 0.8, opacity: 0 }}

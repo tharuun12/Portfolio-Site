@@ -40,7 +40,7 @@ export default function Education() {
       >
         <h2 className="text-4xl font-bold text-center mb-12 text-gradient">Education</h2>
         
-        <div className="space-y-8">
+        <div className="space-y-8 ">
           {education.map((edu, index) => (
             <motion.div
               key={edu.school}
@@ -57,15 +57,19 @@ export default function Education() {
                 <div className="hidden md:block h-full w-1 bg-blue-200 dark:bg-blue-900 absolute top-6 left-3" />
               </div>
               
-              <div className="md:col-span-4 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-                <h3 className="text-xl font-bold mb-2">{edu.school}</h3>
-                <h4 className="text-lg text-blue-600 dark:text-blue-400 mb-2">{edu.degree}</h4>
-                <div className="flex items-center text-gray-600 dark:text-gray-400 mb-4">
-                  <Calendar className="w-4 h-4 mr-2" />
-                  <span>{edu.period}</span>
-                </div>
-                <p className="text-gray-700 dark:text-gray-300">{edu.details}</p>
-              </div>
+              <div className="md:col-span-4 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 
+      transition-all duration-300 
+      hover:scale-105 
+      hover:shadow-xl 
+      hover:translate-y-[-10px]">
+      <h3 className="text-xl font-bold mb-2">{edu.school}</h3>
+      <h4 className="text-lg text-blue-600 dark:text-blue-400 mb-2">{edu.degree}</h4>
+      <div className="flex items-center text-gray-600 dark:text-gray-400 mb-4">
+        <Calendar className="w-4 h-4 mr-2" />
+        <span>{edu.period}</span>
+      </div>
+      <p className="text-gray-700 dark:text-gray-300">{edu.details}</p>
+    </div>
             </motion.div>
           ))}
         </div>

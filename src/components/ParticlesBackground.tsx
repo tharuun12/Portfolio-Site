@@ -24,30 +24,30 @@ export default function ParticlesBackground() {
           },
           links: {
             color: '#4F46E5',
-            distance: 150,
+            distance: 200,
             enable: true,
-            opacity: 0.4,
-            width: 1,
+            opacity: 0.2, // Reduced opacity
+            width: 0.8, // Thinner lines
           },
           move: {
             enable: true,
-            speed: 2,
+            speed: 1, // Slower movement
           },
           number: {
             density: {
               enable: true,
-              area: 800,
+              area: 1000, // Increased area = fewer particles
             },
-            value: 80,
+            value: 50, // Reduced number of particles
           },
           opacity: {
-            value: 0.5,
+            value: 0.3, // Reduced particle opacity
           },
           shape: {
             type: 'circle',
           },
           size: {
-            value: { min: 1, max: 3 },
+            value: { min: 1, max: 2 }, // Smaller particles
           },
         },
         detectRetina: true,

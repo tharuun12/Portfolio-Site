@@ -64,11 +64,18 @@ export default function Experience() {
                     <Calendar className="w-4 h-4 mr-2" />
                     <span>{exp.period}</span>
                   </div>
-                  <ul className="space-y-2">
-                    {exp.description.map((item, i) => (
-                      <li key={i} className="text-gray-700 dark:text-gray-300">{item}</li>
+                  <ol className="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-300">
+                    {exp.description.map((item: string, i: number) => (
+                      <ul
+                        key={i} 
+                        className="text-left leading-relaxed pl-2 relative group transition-all duration-300 hover:translate-x-2 hover:border-l-4 hover:border-blue-500"
+                      >
+                        <span className="block p-2 bg-transparent relative group-hover:bg-blue-50 dark:group-hover:bg-gray-700 rounded-md transition-colors duration-300">
+                          {item}
+                        </span>
+                      </ul>
                     ))}
-                  </ul>
+                  </ol>
                 </div>
               </div>
               

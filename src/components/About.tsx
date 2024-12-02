@@ -95,12 +95,12 @@ export default function About() {
             <motion.img
               src={image}
               alt="Profile"
-              className="rounded-full w-48 h-48 mx-auto mb-8 object-cover border-4 border-blue-500 shadow-lg"
+              className="rounded-full w-60 h-60 mx-auto mb-8 object-cover border-4 border-blue-500 shadow-lg"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5 }}
               whileHover={{ 
-                scale: 1.05, 
+                scale: 1.5, 
                 rotate: 5,
                 transition: {
                   type: "spring",

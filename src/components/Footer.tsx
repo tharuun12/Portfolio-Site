@@ -18,6 +18,15 @@ const socialLinks = [
   }
 ];
 
+<div className="flex space-x-6">
+  {socialLinks.map((link) => (
+    <a key={link.label} href={link.href} className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">
+      <link.icon className="w-6 h-6" aria-hidden="true" />
+      <span className="sr-only">{link.label}</span>
+    </a>
+  ))}
+</div>
+
 /**
  * Footer component that renders the footer section of the website.
  * It includes copyright information and social media links.

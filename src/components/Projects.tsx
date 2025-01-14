@@ -4,6 +4,32 @@ import { Github } from 'lucide-react';
 const Projects = () => {
   const projects = [
     {
+      title: 'Ticket Booking System',
+      tools: ['Express.js', 'PostgreSQL', 'Node.js', 'RESTful APIs'],
+      problem: 'Inefficient booking processes and lack of real-time updates in ticket management systems.',
+      solution: [
+        '1. Built a full-stack system with API integration, ensuring secure real-time updates and efficient management.',
+        '2. Created seat allocation logic and API endpoints, reducing booking time by 30% for 7-seat group bookings.',
+        '3. Enabled users to track 100% of past bookings and cancellations via API, improving accessibility and user interaction.'
+      ],
+      liveDemo: 'https://train-booking-back.vercel.app/signin',
+      github: 'https://github.com/tharuun12/ticket-booking-system', 
+    
+    },
+    {
+      title: 'Sorting Visualizer',
+      tools: ['React.js', 'Vercel'],
+      problem: 'Complexity in understanding sorting algorithms through static explanations.',
+      solution: [
+        '1. Built an interactive app with real-time visualizations and color-coded feedback, improving user comprehension of sorting algorithms by 40%.',
+        '2. Integrated adjustable array sizes and custom input options, increasing user engagement through dynamic interaction.',
+        '3. Deployed the app on Vercel, ensuring fast access across devices, using Git for continuous development.'
+      ],
+      liveDemo: 'https://sort-watch.vercel.app/',
+      github: 'https://github.com/tharuun12/Sorting-Algorithm-Visualizer', 
+      
+    },    
+    {
       title: 'Smart City Management System',
       tools: ['MySQL', 'HTML', 'CSS'],
       problem: 'Communication inefficiencies in city management.',
@@ -98,12 +124,31 @@ const Projects = () => {
                     </div>
                     
                     <div className="group">
-                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-3 text-green-500 group-hover:animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        Solution
-                      </h4>
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3 flex items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6 mr-3 text-green-500  "
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Solution
+                      {project.liveDemo && (
+                        <a
+                          href={project.liveDemo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className=" justify-end text-green-500 dark:text-green-400 hover:text-green-600 dark:hover:text-green-300 pl-40"
+                        >
+                          <span className="mr-2">🔗</span>
+                          Live Demo
+                        </a>
+                      )}
+                    </h4>
+
+
                       <ul className=" list-inside space-y-2 text-gray-700 dark:text-gray-300 pl-9 transition-colors group-hover:text-gray-900 dark:group-hover:text-white">
                         {project.solution.map((item, i) => (
                           <ul key={i} className="text-left leading-relaxed pl-2 relative group transition-all duration-300 hover:translate-x-2 hover:border-l-4 hover:border-blue-500">
@@ -122,6 +167,7 @@ const Projects = () => {
                       <Github className="w-5 h-5 mr-2" />
                       View on GitHub
                     </a>
+                    
                 </div>
                 </div>
                 
